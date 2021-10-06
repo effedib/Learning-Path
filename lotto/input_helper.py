@@ -15,10 +15,10 @@ from lotto.city import City
 
 
 class InputHelper:
-    def __init__(self, numbers=TicketNumbers(), bet=Bet(), city=City(), num=0, num2gen=0):
-        self.numbers = numbers
-        self.bet = bet
-        self.city = city
+    def __init__(self, num=0, num2gen=0):
+        self.numbers = TicketNumbers()
+        self.bet = Bet()
+        self.city = City()
         self.num = num
         self.num2gen = num2gen
 
@@ -28,13 +28,12 @@ class InputHelper:
     def numInput(self):
         while not 1 <= self.num2gen <= 10:
             try:
-                self.num2gen = int(input(
-                    f'\nEnter how many numbers I have to generate for the bill n° {self.num}. '
-                    f'(MIN: 1 - MAX: 10 - 0: EXIT)\n'))
+                self.num2gen = int(input(f'\nEnter how many numbers I have to generate for the bill n° {self.num}. '
+                                         f'(MIN: 1 - MAX: 10 - 0: EXIT)\n'))
                 if self.num2gen == 0:
                     print("Ending...")
-                    quit()
-            except:
+                    exit()
+            except ValueError:
                 print("Enter a number between 1 and 10 (0 to EXIT)")
 
         self.numbers.genNumbers(self.num2gen)

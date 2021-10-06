@@ -30,7 +30,7 @@ def main():
 
         else:
             print("Wrong Number of tickets. I'm quitting...")
-            quit()
+            exit()
 
 
 if __name__ == "__main__":
